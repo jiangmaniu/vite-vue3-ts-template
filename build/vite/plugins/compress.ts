@@ -1,5 +1,5 @@
 /**
- * 打包压缩 gzip 或 brotli
+ * 生产环境打包压缩 gzip 或 brotli
  * https://github.com/anncwb/vite-plugin-compression
  */
 import type { Plugin } from 'vite'
