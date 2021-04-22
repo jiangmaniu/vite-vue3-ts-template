@@ -1,5 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Format and submit code according to lintstagedrc.js configuration
+# https://github.com/okonet/lint-staged
+npm run lint:lint-staged
+
 # https://www.npmjs.com/package/pretty-quick
 npm run lint:pretty
