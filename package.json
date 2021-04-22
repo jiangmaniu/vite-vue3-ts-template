@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && yarn",
+    "clear:cache": "rimraf node_modules/.cache && rimraf node_modules/.vite",
+    "clear:lib": "rimraf node_modules"
   },
   "dependencies": {
     "vue": "^3.0.5"
@@ -14,6 +17,7 @@
     "@types/fs-extra": "^9.0.11",
     "@vitejs/plugin-vue": "^1.2.1",
     "@vue/compiler-sfc": "^3.0.5",
+    "rimraf": "^3.0.2",
     "typescript": "^4.1.3",
     "vite": "^2.1.5",
     "vite-plugin-compression": "^0.2.4",
