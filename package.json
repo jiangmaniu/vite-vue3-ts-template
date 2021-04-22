@@ -11,6 +11,7 @@
     "lint:eslint": "eslint \"src/**/*.{ts,tsx,vue}\" --fix",
     "lint:pretty": "pretty-quick --stage",
     "lint:staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "lint:lslint": "ls-lint",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
+    "@ls-lint/ls-lint": "^1.9.2",
     "@types/estree": "^0.0.47",
     "@types/fs-extra": "^9.0.11",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
