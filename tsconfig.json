@@ -1,15 +1,37 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,                         // 报错未使用的变量
+    "noUnusedParameters": true,                     // 报错未使用的参数
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "paths": {
+      "/$/*": ["build/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "typings/**/*.d.ts",
+    "typings/**/*.ts",
+    "build/**/*.d.ts",
+    "build/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "*.js"
+  ]
 }

@@ -1,7 +1,7 @@
 declare global {
-  declare type Recordable<T = any> = Record<string, T>
+  type Recordable<T = any> = Record<string, T>
 
-  declare interface ViteEnv {
+  interface ViteEnv {
     VITE_PROT: number;
     VITE_PUBLIC_PATH: string;
     VITE_PROXY: [string, string][];

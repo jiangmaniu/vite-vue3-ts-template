@@ -2,10 +2,10 @@ import { ConfigEnv, defineConfig, loadEnv, UserConfig } from 'vite'
 
 import { resolve } from 'path'
 
-import vue from '@vitejs/plugin-vue'
 import { wrapperEnv } from './build/utils'
 import { createProxy } from './build/vite/proxy'
 import { OUTPUT_DIR } from './build/constant'
+import { configVitePlugins } from './build/vite/plugins/index'
 
 
 function pathResolve (dir: string) {
@@ -15,6 +15,7 @@ function pathResolve (dir: string) {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
+  const isBuild = command === 'build'
   const root = process.cwd()
 
   const env = loadEnv(mode, root)
@@ -31,6 +32,8 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       alias: [
         // /@/xxx => src/xxx
         { find: /\/@\//, replacement: pathResolve('src') + '/' },
+        // /$/xxx => src/xxx
+        { find: /\/$\//, replacement: pathResolve('build') + '/' },
       ]
     },
     server: {
@@ -51,6 +54,6 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       brotliSize: false,
       chunkSizeWarningLimit: 1500
     },
-    plugins: [vue()]
+    plugins: configVitePlugins(viteEnv, isBuild)
   }
 })
