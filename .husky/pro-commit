@@ -1,5 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/common.sh"
 
 # Check the file name
 # ! ls-lint cannot be used normally in mac pro of M1 system.
