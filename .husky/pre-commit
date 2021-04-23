@@ -5,11 +5,11 @@
 # Check the file name
 # ! ls-lint cannot be used normally in mac pro of M1 system.
 # https://ls-lint.org/
-npm run lint:ls-lint
+npm run lint:lslint
 
 # Format and submit code according to lintstagedrc.js configuration
 # https://github.com/okonet/lint-staged
-npm run lint:lint-staged
+npm run lint:staged
 
 # https://www.npmjs.com/package/pretty-quick
 npm run lint:pretty
