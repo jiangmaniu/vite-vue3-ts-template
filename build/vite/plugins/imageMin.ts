@@ -3,11 +3,11 @@
  * https://github.com/anncwb/vite-plugin-imagemin
  */
 
-import type { Plugin } from "vite"
+import { PluginType } from '.'
 import imageminPlugin from 'vite-plugin-imagemin'
 
-export function configImageMinPlugin (): Plugin {
-  const plugin: Plugin = imageminPlugin({
+export function configImageMinPlugin(): PluginType {
+  const plugin: PluginType = imageminPlugin({
     gifsicle: {
       optimizationLevel: 3,
       interlaced: false,
@@ -31,7 +31,7 @@ export function configImageMinPlugin (): Plugin {
           removeEmptyAttrs: false,
         },
       ],
-    }
+    },
   })
   return plugin
 }

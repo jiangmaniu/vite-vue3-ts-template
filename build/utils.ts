@@ -1,10 +1,17 @@
+/**
+ * @description: 是否未打包分析模式
+ * @return {boolean}
+ */
+export function isReportMode(): boolean {
+  return process.env.REPORT === 'true'
+}
 
 /**
  * @description: 读取所有环境变量配置文件并格式化相应类型
  * @param {Recordable} envConf
  * @return {ViteEnv}
  */
-export function wrapperEnv (envConf: Recordable): ViteEnv {
+export function wrapperEnv(envConf: Recordable): ViteEnv {
   const ret: any = {}
 
   for (const envName of Object.keys(envConf)) {

@@ -1,15 +1,19 @@
-import type { Plugin } from "vite";
+import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-import { configCompressPlugin } from "./compress";
-import { configImageMinPlugin } from "./imageMin";
+import { configCompressPlugin } from './compress'
+import { configImageMinPlugin } from './imageMin'
+import { configVisualizerPlugin } from './visualizer'
 
-type Plugins = (Plugin | Plugin[])[]
+export type PluginType = Plugin | Plugin[]
 
-export function configVitePlugins (viteEnv: ViteEnv, isBuild: boolean) {
-  const vitePlugins: Plugins = [
-    vue()
-  ]
+export type PluginsType = PluginType[]
+
+export function configVitePlugins(viteEnv: ViteEnv, isBuild: boolean): PluginsType {
+  const vitePlugins: PluginsType = [vue()]
+
+  // 打包分析 vite-plugin-visualizer
+  vitePlugins.push(configVisualizerPlugin())
 
   // 生产环境
   if (isBuild) {

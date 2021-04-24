@@ -2,12 +2,12 @@
  * 生产环境打包压缩 gzip 或 brotli
  * https://github.com/anncwb/vite-plugin-compression
  */
-import type { Plugin } from 'vite'
 import { COMPRESS_DELETE_ORIGIN_FILE, COMPRESS_OPTION } from '/$/constant'
 import compressPlugin from 'vite-plugin-compression'
+import { PluginType } from '.'
 
-export function configCompressPlugin(): Plugin | Plugin[] {
-  const plugins: Plugin | Plugin[] = []
+export function configCompressPlugin(): PluginType {
+  const plugins: PluginType = []
 
   // gzip 压缩
   if (COMPRESS_OPTION.includes('gzip')) {
