@@ -26,15 +26,19 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
 
     // JSON转对象类型
     const JSON_TYPE_KEYS = ['VITE_PROXY']
-    if (JSON_TYPE_KEYS.includes(envValue)) {
+    if (JSON_TYPE_KEYS.includes(envName)) {
       try {
         envValue = JSON.parse(envValue)
-      } catch {}
+      } catch (err) {
+        console.log('viteEnv 转对象错误')
+      }
       continue
     }
 
     // 转布尔类型
     envValue = envValue === 'true' ? true : envValue === 'false' ? false : envValue
+
+    ret[envName] = envValue
   }
 
   return ret

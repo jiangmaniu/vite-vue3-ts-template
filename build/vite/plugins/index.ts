@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import { configCompressPlugin } from './compress'
 import { configImageMinPlugin } from './imageMin'
 import { configVisualizerPlugin } from './visualizer'
+import { configPwaPlugin } from './pwa'
 
 export type PluginType = Plugin | Plugin[]
 
@@ -22,9 +23,10 @@ export function configVitePlugins(viteEnv: ViteEnv, isBuild: boolean): PluginsTy
 
     // 图片压缩 vite-plugin-imagemin
     vitePlugins.push(configImageMinPlugin())
-  }
 
-  console.log(viteEnv)
+    // PWA 应用 vite-plugin-pwa
+    vitePlugins.push(configPwaPlugin(viteEnv))
+  }
 
   return vitePlugins
 }
