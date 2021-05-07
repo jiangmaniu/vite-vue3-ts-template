@@ -15,12 +15,12 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
   const ret: any = {}
 
   for (const envName of Object.keys(envConf)) {
-    let envValue = envConf[envName]
+    const envValue = envConf[envName]
 
     // 转数字类型
-    const NUMBER_TYPE_KEYS = ['VITE_PROT']
+    const NUMBER_TYPE_KEYS = ['VITE_PORT']
     if (NUMBER_TYPE_KEYS.includes(envValue)) {
-      envValue = Number(envValue)
+      ret[envName] = Number(envValue)
       continue
     }
 
@@ -28,7 +28,7 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
     const JSON_TYPE_KEYS = ['VITE_PROXY']
     if (JSON_TYPE_KEYS.includes(envName)) {
       try {
-        envValue = JSON.parse(envValue)
+        ret[envName] = JSON.parse(envValue)
       } catch (err) {
         console.log('viteEnv 转对象错误')
       }
@@ -36,9 +36,7 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
     }
 
     // 转布尔类型
-    envValue = envValue === 'true' ? true : envValue === 'false' ? false : envValue
-
-    ret[envName] = envValue
+    ret[envName] = envValue === 'true' ? true : envValue === 'false' ? false : envValue
   }
 
   return ret

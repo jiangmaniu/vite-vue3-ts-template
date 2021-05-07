@@ -21,8 +21,7 @@ export default defineConfig(
 
     // loadEnv 读取的布尔类型都为字符串，需要通过该方法转为相应类型
     const viteEnv = wrapperEnv(env)
-    const { VITE_PROT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONFIG } = viteEnv
-
+    const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONFIG } = viteEnv
     return {
       root,
       base: VITE_PUBLIC_PATH,
@@ -35,7 +34,7 @@ export default defineConfig(
         ],
       },
       server: {
-        port: VITE_PROT,
+        port: VITE_PORT,
         // 从 .env.development 加载代理配置
         proxy: createProxy(VITE_PROXY),
       },
