@@ -58,5 +58,6 @@
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china"
-  }
+  },
+  "license": "MIT"
 }
