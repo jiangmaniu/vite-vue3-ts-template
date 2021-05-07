@@ -7,6 +7,7 @@ import { configCompressPlugin } from './compress'
 import { configImageMinPlugin } from './imageMin'
 import { configVisualizerPlugin } from './visualizer'
 import { configPwaPlugin } from './pwa'
+import { configHtmlPlugin } from './html'
 
 export type PluginType = Plugin | Plugin[]
 
@@ -17,6 +18,9 @@ export function configVitePlugins(viteEnv: ViteEnv, isBuild: boolean): PluginsTy
 
   // 打包分析 vite-plugin-visualizer
   vitePlugins.push(configVisualizerPlugin())
+
+  // html 压缩和 ejs 模板 vite-plugin-html
+  vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
 
   // 生产环境
   if (isBuild) {
